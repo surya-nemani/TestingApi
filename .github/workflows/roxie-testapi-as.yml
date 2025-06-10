@@ -21,7 +21,7 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release
     - name: Publish
-      run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
+      run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/testapi
     - name: Publish Artifacts
       uses: actions/upload-artifact@v4
       with:
