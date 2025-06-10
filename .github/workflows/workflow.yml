@@ -1,7 +1,10 @@
 # File: .github/workflows/workflow.yml
 
 name: Run Azure Login with System-assigned Managed Identity
-on: [push]
+on:
+  push:
+    branches:
+    - master
 
 jobs:
   build-and-deploy:
