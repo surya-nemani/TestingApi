@@ -29,7 +29,6 @@ jobs:
     # Run dotnet build and publish    
     - name: Build
       run: |
-        dotnet restore
         dotnet build --configuration Release
         dotnet publish -c Release --property:PublishDir='${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/testapi'
 
