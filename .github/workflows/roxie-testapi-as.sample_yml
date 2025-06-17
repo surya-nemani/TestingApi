@@ -1,14 +1,17 @@
-name: Build and deploy .NET Core application to Web App roxie-testapi-as
+name: manual testing
 on:
   push:
     branches:
     - master
+workflow_dispatch
+
 env:
   AZURE_WEBAPP_NAME: roxie-testapi-as
   AZURE_WEBAPP_PACKAGE_PATH: "."
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 8.0.x
   WORKING_DIRECTORY: TestingApi
+
 jobs:
   build:
     runs-on: ubuntu-latest
