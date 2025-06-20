@@ -1,7 +1,9 @@
 name: manual testing from dev
 on:
   workflow_dispatch:
-
+  schedule:
+    - cron: '10 0 * * *'
+  
 jobs:
   build_code:
     runs-on: ubuntu-latest
