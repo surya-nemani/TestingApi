@@ -1,17 +1,16 @@
 name: manual testing from dev
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '10 0 * * *'
   
 jobs:
   build_code:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "triggered manually..."
+      - run: echo "build triggered manually..."
       
-# name: Build and deploy .NET Core application to Web App roxie-testapi-as
-# on:
-#  push:
-#    branches:
-#    - master
+      - name: Exit if not on master branch
+        if: github.ref == 'refs/heads/main'
+        run: |
+          echo "Deploying to production only from main branch.  Current branch is: $GITHUB_REF"
+          exit 1
+          
