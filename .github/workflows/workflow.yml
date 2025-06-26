@@ -9,7 +9,7 @@ jobs:
       - run: echo "build triggered manually..."
       
       - name: Exit if not on master branch
-        if: github.ref == 'refs/heads/developp'
+        if: github.ref == 'refs/heads/develop'
         run: |
           echo "Deploying to production only from main branch.  Current branch is: $GITHUB_REF"
           exit 1
