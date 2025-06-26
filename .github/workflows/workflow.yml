@@ -11,6 +11,6 @@ jobs:
       - name: Exit if not on master branch
         if: github.ref == 'refs/heads/main'
         run: |
-          echo "Deploying to production only from main branch.  Current branch is: $GITHUB_REF"
-          exit 1
+            echo "Deploying to production only from main branch.  Current branch is: $GITHUB_REF"
+            exit 1
           
