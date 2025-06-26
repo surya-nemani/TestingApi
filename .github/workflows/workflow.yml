@@ -6,9 +6,13 @@ jobs:
   build_code:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "build triggered manually..."
-      
-      - name: Exit if not on master branch
+      - name: Check branch
+        if: ${{ github.ref != 'refs/heads/testing' }}
+        run: |
+          echo "Deploying to dev only from develop branch.  Current branch is: $GITHUB_REF"
+          exit 1
+                
+      - name: Exit if not on develop branch
         if: github.ref != 'refs/heads/develop'
         run: |
           echo "Deploying to dev only from develop branch.  Current branch is: $GITHUB_REF"
