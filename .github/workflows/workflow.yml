@@ -6,15 +6,17 @@ jobs:
   build_code:
     runs-on: ubuntu-latest
     steps:
+      - name: Exit if the branch is not master
+        run: |
+          if [[ "${{ github.ref }}" != "refs/heads/develop" ]]; then
+            echo "Branch is not develop, exiting."
+            exit 0
+          fi          
+
       - name: Check branch
         if: ${{ github.ref != 'refs/heads/testing' }}
         run: |
           echo "Deploying to dev only from develop branch.  Current branch is: $GITHUB_REF"
           exit 1
                 
-      - name: Exit if not on develop branch
-        if: github.ref != 'refs/heads/develop'
-        run: |
-          echo "Deploying to dev only from develop branch.  Current branch is: $GITHUB_REF"
-          exit 1
-          
+      
